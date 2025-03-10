@@ -27,7 +27,7 @@ char* charArrayInverter(char* workingMemory) {
 }
 
 void consolePrintFunction(const char* outputData, bool precedingSpace) {
-	if (!true)
+	if (precedingSpace == !true)
 	{
 	printf("%s\n", outputData);
 	}
