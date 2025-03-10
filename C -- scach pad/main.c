@@ -18,6 +18,7 @@ char* charArrayInverter(char* workingMemory) {
 	
 	while (i < j) {
 		char temp = workingMemory[i];
+		workingMemory[i] = workingMemory[j];
 		workingMemory[j] = temp;
 		i++, j--;
 	}
@@ -37,8 +38,8 @@ int returnCharArrayLength(const char* targetInput) {
 }
 
 char* takeConsoleInput(const char* consoleMessage) {
-	static char input[20];
+	static char input[21];
 	consolePrintFunction(consoleMessage);
-	scanf_s("%19s", input, (unsigned)sizeof(input) / sizeof(input[0]));
+    scanf_s("%20s", input, (unsigned int)(sizeof(input) / sizeof(input[0])));
 	return input;
 }
