@@ -10,6 +10,7 @@ char* charArrayInverter(char* charArrayInput);
 void consolePrintFunction(const char* output, const int printLevel);
 int returnCharArrayLength(const char* dataInput);
 char* takeConsoleInput(const char* consoleMessage, const int printLevel);
+void test();
 
 int main() {
 	char* charArray = takeConsoleInput("Enter a string: ", line);
@@ -54,4 +55,13 @@ char* takeConsoleInput(const char* consoleMessage, const int printLevel) {
 	consolePrintFunction(consoleMessage, printLevel);
     scanf_s("%20s", input, (unsigned int)(sizeof(input) / sizeof(input[0])));
 	return input;
+}
+
+void test() {
+	double nc;
+	
+	for (nc = 0; getchar() != EOF; ++nc)
+		;
+	printf("%.0f\n", nc);
+
 }
