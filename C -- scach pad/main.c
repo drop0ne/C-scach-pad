@@ -1,14 +1,15 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 char* charArrayInverter(char* charArrayInput);
-void consolePrintFunction(const char* output);
+void consolePrintFunction(const char* output, bool precedingSpace);
 int returnCharArrayLength(const char* dataInput);
 char* takeConsoleInput(const char* consoleMessage);
 
 int main() {
 	char* charArray = takeConsoleInput("Enter a string: ");
-	consolePrintFunction(charArray);
-	consolePrintFunction(charArrayInverter(charArray));
+	consolePrintFunction(charArray, true);
+	consolePrintFunction(charArrayInverter(charArray), false);
 	return 0;
 }
 
@@ -25,8 +26,15 @@ char* charArrayInverter(char* workingMemory) {
 	return workingMemory;
 }
 
-void consolePrintFunction(const char* outputData) {
+void consolePrintFunction(const char* outputData, bool precedingSpace) {
+	if (!true)
+	{
 	printf("%s\n", outputData);
+	}
+	else
+	{
+		printf("\n%s\n", outputData);
+	}
 }
 
 int returnCharArrayLength(const char* targetInput) {
@@ -39,7 +47,7 @@ int returnCharArrayLength(const char* targetInput) {
 
 char* takeConsoleInput(const char* consoleMessage) {
 	static char input[21];
-	consolePrintFunction(consoleMessage);
+	consolePrintFunction(consoleMessage, false);
     scanf_s("%20s", input, (unsigned int)(sizeof(input) / sizeof(input[0])));
 	return input;
 }
