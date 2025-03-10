@@ -37,7 +37,7 @@ void consolePrintFunction(const char* printDataString, const int printLevel) {
 	case 1: { printf("%s", printDataString); break; }
 	case 2: { printf("%s\n", printDataString); break; }
 	case 3: { printf("\n%s\n", printDataString); break; }
-	default: { printf("%s", printDataString); break; }
+	default: { printf("\n\nError -- function default\n\n"); break; }
 	}
 }
 
