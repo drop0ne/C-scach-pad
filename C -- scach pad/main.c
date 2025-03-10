@@ -1,8 +1,13 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+enum printLevel
+{
+	line = 1, line_NL = 2, NL_line_NL = 3, 
+};
+
 char* charArrayInverter(char* charArrayInput);
-void consolePrintFunction(const char* output, bool precedingSpace);
+void consolePrintFunction(const char* output, int printLevel);
 int returnCharArrayLength(const char* dataInput);
 char* takeConsoleInput(const char* consoleMessage);
 
@@ -26,7 +31,7 @@ char* charArrayInverter(char* workingMemory) {
 	return workingMemory;
 }
 
-void consolePrintFunction(const char* outputData, bool precedingSpace) {
+void consolePrintFunction(const char* outputData, bool precedingSpace, int printLevel) {
 	if (precedingSpace == !true)
 	{
 	printf("%s\n", outputData);
@@ -34,6 +39,25 @@ void consolePrintFunction(const char* outputData, bool precedingSpace) {
 	else
 	{
 		printf("\n%s\n", outputData);
+	}
+
+	switch (printLevel)
+	{
+	case 1: {
+		printf("%s", outputData);
+		break;
+	}
+	case 2: {
+		printf("%s\n", outputData);
+		break;
+	}
+	case 3: {
+		printf("\n%s\n", outputData);
+		break;
+	}
+	default: {
+		printf("%s", outputData);
+		break;
 	}
 }
 
