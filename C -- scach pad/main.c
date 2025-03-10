@@ -9,10 +9,10 @@ enum printLevel
 char* charArrayInverter(char* charArrayInput);
 void consolePrintFunction(const char* output, const int printLevel);
 int returnCharArrayLength(const char* dataInput);
-char* takeConsoleInput(const char* consoleMessage);
+char* takeConsoleInput(const char* consoleMessage, const int printLevel);
 
 int main() {
-	char* charArray = takeConsoleInput("Enter a string: ");
+	char* charArray = takeConsoleInput("Enter a string: ", line);
 	consolePrintFunction(charArray, NL_line_NL);
 	consolePrintFunction(charArrayInverter(charArray), line);
 	return 0;
@@ -49,9 +49,9 @@ int returnCharArrayLength(const char* targetInput) {
 	return i;
 }
 
-char* takeConsoleInput(const char* consoleMessage) {
+char* takeConsoleInput(const char* consoleMessage, const int printLevel) {
 	static char input[21];
-	consolePrintFunction(consoleMessage, line);
+	consolePrintFunction(consoleMessage, printLevel);
     scanf_s("%20s", input, (unsigned int)(sizeof(input) / sizeof(input[0])));
 	return input;
 }
