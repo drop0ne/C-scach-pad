@@ -7,14 +7,14 @@ enum printLevel
 };
 
 char* charArrayInverter(char* charArrayInput);
-void consolePrintFunction(const char* output, int printLevel);
+void consolePrintFunction(const char* output, const int printLevel);
 int returnCharArrayLength(const char* dataInput);
 char* takeConsoleInput(const char* consoleMessage);
 
 int main() {
 	char* charArray = takeConsoleInput("Enter a string: ");
-	consolePrintFunction(charArray, true);
-	consolePrintFunction(charArrayInverter(charArray), false);
+	consolePrintFunction(charArray, NL_line_NL);
+	consolePrintFunction(charArrayInverter(charArray), line);
 	return 0;
 }
 
@@ -31,33 +31,13 @@ char* charArrayInverter(char* workingMemory) {
 	return workingMemory;
 }
 
-void consolePrintFunction(const char* outputData, bool precedingSpace, int printLevel) {
-	if (precedingSpace == !true)
-	{
-	printf("%s\n", outputData);
-	}
-	else
-	{
-		printf("\n%s\n", outputData);
-	}
-
+void consolePrintFunction(const char* printDataString, const int printLevel) {
 	switch (printLevel)
 	{
-	case 1: {
-		printf("%s", outputData);
-		break;
-	}
-	case 2: {
-		printf("%s\n", outputData);
-		break;
-	}
-	case 3: {
-		printf("\n%s\n", outputData);
-		break;
-	}
-	default: {
-		printf("%s", outputData);
-		break;
+	case 1: { printf("%s", printDataString); break; }
+	case 2: { printf("%s\n", printDataString); break; }
+	case 3: { printf("\n%s\n", printDataString); break; }
+	default: { printf("%s", printDataString); break; }
 	}
 }
 
@@ -71,7 +51,7 @@ int returnCharArrayLength(const char* targetInput) {
 
 char* takeConsoleInput(const char* consoleMessage) {
 	static char input[21];
-	consolePrintFunction(consoleMessage, false);
+	consolePrintFunction(consoleMessage, line);
     scanf_s("%20s", input, (unsigned int)(sizeof(input) / sizeof(input[0])));
 	return input;
 }
