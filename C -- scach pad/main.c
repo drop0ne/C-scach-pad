@@ -110,24 +110,31 @@ int power(int x, int n, int switchFork)
 { /* raise x to n-th power n > 0 */
 	int i = { 1 }, p = { 1 };
 
-	switch (switchFork)	{
-	case lessthanEqualN: { 
-	for (; i <= n; ++i)
+	switch (switchFork) 
 	{
-		p = p * x;
-	}
-	return (p);
-	break;
-	}
-	case nGraterthanZero: {
-	for (p = 1; n > 0; --n)
-	{
-		p = p * x;
-	}
-	break;
-	}
-	return (p);
-		break; 
-	default: { printf("Error -- function default\n"); return -1; break; }
+		case lessthanEqualN:
+		{
+			for (; i <= n; ++i)
+			{
+				p = p * x;
+			}
+			return (p);
+			break;
+		}
+		case nGraterthanZero:
+		{
+			for (p = 1; n > 0; --n)
+			{
+				p = p * x;
+			}
+			return (p);
+			break;
+		}
+		default:
+		{
+			printf("Error -- function default\n");
+			return -1;
+			break;
+		}
 	}
 }
