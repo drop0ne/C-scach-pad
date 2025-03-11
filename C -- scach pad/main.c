@@ -11,6 +11,8 @@ int returnCharArrayLength(const char* dataInput);
 char* takeConsoleInput(const char* consoleMessage, const int printLevel);
 void countLines();
 void countDigits();
+void testPower();
+int power(int x, int n);
 
 int main() {
 	char* charArray = takeConsoleInput("Enter a string: ", line);
@@ -75,6 +77,7 @@ void countDigits() {
 	/* count digits, white space, others */
 	int c = { 0 }, i = { 0 }, nwhite = { 0 }, nother = { 0 };
 	int ndigit[ndigitArraySize] = { 0,0,0,0,0,0,0,0,0,0 };
+	
 	for (int i = 0; i < 10; i++)
 	{
 		ndigit[i] = 0;
@@ -94,4 +97,23 @@ void countDigits() {
 	}
 
 	printf("\nwhite space = %d, other = %d\n", nwhite, nother);
+}
+
+void testPower() {
+	/* test power function */
+	
+	for (int i = {0}; i < 10; ++i)
+	{
+		printf("%d %d %d\n", i, power(2,i), power(-3, i));
+	}
+}
+
+int power(int x, int n) {
+	int i = { 1 }, p = { 1 };
+
+	for (; i <= n; ++i)
+	{
+		p = p * x;
+	}
+	return (p);
 }
