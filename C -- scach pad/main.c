@@ -10,7 +10,7 @@ char* charArrayInverter(char* charArrayInput);
 void consolePrintFunction(const char* output, const int printLevel);
 int returnCharArrayLength(const char* dataInput);
 char* takeConsoleInput(const char* consoleMessage, const int printLevel);
-void test();
+void countLines();
 
 int main() {
 	char* charArray = takeConsoleInput("Enter a string: ", line);
@@ -57,11 +57,12 @@ char* takeConsoleInput(const char* consoleMessage, const int printLevel) {
 	return input;
 }
 
-void test() {
-	double nc;
-	
-	for (nc = 0; getchar() != EOF; ++nc)
-		;
-	printf("%.0f\n", nc);
+void countLines() {
+	int c, nl = { 0 };
 
+	while ((c = getchar()) != EOF)
+	{
+		if ((c == '\n')) { ++nl; }
+	}
+	printf("%d\n", nl);
 }
