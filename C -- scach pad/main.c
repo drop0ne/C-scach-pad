@@ -57,9 +57,7 @@ char* takeConsoleInput(const char* consoleMessage, const int printLevel) {
 
 void countLines() {
 	/* count lines, words, chars in input */
-	int c, nl, nw, nc, inword;
-	nl = nw = nc = 0;
-	inword = NO;
+	int c = { 0 }, nl = { 0 }, nw = { 0 }, nc = { 0 }, inword = {NO};
 
 	while ((c = getchar()) != EOF)
 	{
