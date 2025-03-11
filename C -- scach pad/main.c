@@ -3,12 +3,14 @@
 
 enum printLevel{line = 1, line_NL = 2, NL_line_NL = 3};
 enum yayNay{NO = 0, YES = 1};
+enum arraySize_e{ndigitArraySize = 10};
 
 char* charArrayInverter(char* charArrayInput);
 void consolePrintFunction(const char* output, const int printLevel);
 int returnCharArrayLength(const char* dataInput);
 char* takeConsoleInput(const char* consoleMessage, const int printLevel);
 void countLines();
+void countDigits();
 
 int main() {
 	char* charArray = takeConsoleInput("Enter a string: ", line);
@@ -57,7 +59,7 @@ char* takeConsoleInput(const char* consoleMessage, const int printLevel) {
 
 void countLines() {
 	/* count lines, words, chars in input */
-	int c = { 0 }, nl = { 0 }, nw = { 0 }, nc = { 0 }, inword = {NO};
+	int c = { 0 }, nl = { 0 }, nw = { 0 }, nc = { 0 }, inword = {NO/*enum yayNay*/};
 
 	while ((c = getchar()) != EOF)
 	{
@@ -67,4 +69,29 @@ void countLines() {
 		else if (inword == NO) { inword = YES; ++nw; }
 	}
 	printf("%d %d %d\n", nl, nw, nc);
+}
+
+void countDigits() {
+	/* count digits, white space, others */
+	int c = { 0 }, i = { 0 }, nwhite = { 0 }, nother = { 0 };
+	int ndigit[ndigitArraySize] = { 0,0,0,0,0,0,0,0,0,0 };
+	for (int i = 0; i < 10; i++)
+	{
+		ndigit[i] = 0;
+	}
+
+	while ((c = getchar()) != EOF)
+	{
+		if (c >= '0' && c <= '9') { ++ndigit[c - '0']; }
+		else if (c == ' ' || c == '\n' || c == '\t') { ++nwhite; }
+		else { ++nother; }
+	}
+	printf("digits =");
+
+	for (int i = 0; i < ndigitArraySize/*total number of elements array size*/; i++)
+	{
+		printf(" %d", ndigit[i]);
+	}
+
+	printf("\nwhite space = %d, other = %d\n", nwhite, nother);
 }
