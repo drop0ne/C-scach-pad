@@ -1,10 +1,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-enum printLevel
-{
-	line = 1, line_NL = 2, NL_line_NL = 3, 
-};
+enum printLevel{line = 1, line_NL = 2, NL_line_NL = 3};
+enum yayNay{NO = 0, YES = 1};
 
 char* charArrayInverter(char* charArrayInput);
 void consolePrintFunction(const char* output, const int printLevel);
@@ -19,17 +17,17 @@ int main() {
 	return 0;
 }
 
-char* charArrayInverter(char* workingMemory) {
-	int length = returnCharArrayLength(workingMemory);
+char* charArrayInverter(char* workingMemoryArray) {
+	int length = returnCharArrayLength(workingMemoryArray); // stdio.h  strlen(workingMemoryArray);  it is recommended to use standard library algorithms.  I made my own function for practice.
 	int i = { 0 }, j = { length - 1 };
 	
 	while (i < j) {
-		char temp = workingMemory[i];
-		workingMemory[i] = workingMemory[j];
-		workingMemory[j] = temp;
+		char temp = workingMemoryArray[i];
+		workingMemoryArray[i] = workingMemoryArray[j];
+		workingMemoryArray[j] = temp;
 		i++, j--;
 	}
-	return workingMemory;
+	return workingMemoryArray;
 }
 
 void consolePrintFunction(const char* printDataString, const int printLevel) {
@@ -58,11 +56,17 @@ char* takeConsoleInput(const char* consoleMessage, const int printLevel) {
 }
 
 void countLines() {
-	int c, nl = { 0 };
+	/* count lines, words, chars in input */
+	int c, nl, nw, nc, inword;
+	nl = nw = nc = 0;
+	inword = NO;
 
 	while ((c = getchar()) != EOF)
 	{
+		++nc;
 		if ((c == '\n')) { ++nl; }
+		if (c == ' ' || c == '\n' || c == '\t') { inword = NO; }
+		else if (inword == NO) { inword = YES; ++nw; }
 	}
-	printf("%d\n", nl);
+	printf("%d %d %d\n", nl, nw, nc);
 }
