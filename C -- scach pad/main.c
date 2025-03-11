@@ -4,6 +4,7 @@
 enum printLevel{line = 1, line_NL = 2, NL_line_NL = 3};
 enum yayNay{NO = 0, YES = 1};
 enum arraySize_e{ndigitArraySize = 10};
+enum powerSwitchFork {lessthanEqualN = 0, nGraterthanZero = 1};
 
 char* charArrayInverter(char* charArrayInput);
 void consolePrintFunction(const char* output, const int printLevel);
@@ -12,7 +13,7 @@ char* takeConsoleInput(const char* consoleMessage, const int printLevel);
 void countLines();
 void countDigits();
 void testPower();
-int power(int x, int n);
+int power(int x, int n, int switchFork);
 
 int main() {
 	char* charArray = takeConsoleInput("Enter a string: ", line);
@@ -59,8 +60,7 @@ char* takeConsoleInput(const char* consoleMessage, const int printLevel) {
 	return input;
 }
 
-void countLines() {
-	/* count lines, words, chars in input */
+void countLines() { /* count lines, words, chars in input */
 	int c = { 0 }, nl = { 0 }, nw = { 0 }, nc = { 0 }, inword = {NO/*enum yayNay*/};
 
 	while ((c = getchar()) != EOF)
@@ -73,8 +73,7 @@ void countLines() {
 	printf("%d %d %d\n", nl, nw, nc);
 }
 
-void countDigits() {
-	/* count digits, white space, others */
+void countDigits() { /* count digits, white space, others */
 	int c = { 0 }, i = { 0 }, nwhite = { 0 }, nother = { 0 };
 	int ndigit[ndigitArraySize] = { 0,0,0,0,0,0,0,0,0,0 };
 	
@@ -99,21 +98,36 @@ void countDigits() {
 	printf("\nwhite space = %d, other = %d\n", nwhite, nother);
 }
 
-void testPower() {
-	/* test power function */
+void testPower() { /* test power function */
 	
 	for (int i = {0}; i < 10; ++i)
 	{
-		printf("%d %d %d\n", i, power(2,i), power(-3, i));
+		printf("%d %d %d\n", i, power(2,i, lessthanEqualN), power(-3, i, lessthanEqualN));
 	}
 }
 
-int power(int x, int n) {
+int power(int x, int n, int switchFork) 
+{ /* raise x to n-th power n > 0 */
 	int i = { 1 }, p = { 1 };
 
+	switch (switchFork)	{
+	case lessthanEqualN: { 
 	for (; i <= n; ++i)
 	{
 		p = p * x;
 	}
 	return (p);
+	break;
+	}
+	case nGraterthanZero: {
+	for (p = 1; n > 0; --n)
+	{
+		p = p * x;
+	}
+	break;
+	}
+	return (p);
+		break; 
+	default: { printf("Error -- function default\n"); return -1; break; }
+	}
 }
