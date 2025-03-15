@@ -71,7 +71,7 @@ char* takeConsoleInput(const char* consoleMessage, const int printLevel) {
 }
 
 void countLines() {
-    int c, nl = 0, nw = 0, nc = 0, inword = NO;
+    int c = 0, nl = 0, nw = 0, nc = 0, inword = NO;
     while ((c = getchar()) != EOF) {
         nc++;
         if (c == '\n')
@@ -87,7 +87,7 @@ void countLines() {
 }
 
 void countDigits() {
-    int c, nwhite = 0, nother = 0;
+    int c = 0, nwhite = 0, nother = 0;
     int ndigit[ndigitArraySize] = { 0 };
 
     while ((c = getchar()) != EOF) {
