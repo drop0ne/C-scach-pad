@@ -71,29 +71,29 @@ char* takeConsoleInput(const char* consoleMessage, const int printLevel) {
 }
 
 void countLines() {
-    int c = 0, nl = 0, nw = 0, nc = 0, inword = NO;
-    while ((c = getchar()) != EOF) {
-        nc++;
-        if (c == '\n')
-            nl++;
-        if (c == ' ' || c == '\n' || c == '\t')
+    int character = 0, newLine = 0, newWord = 0, newChar = 0, inword = NO;
+    while ((character = getchar()) != EOF) {
+        newChar++;
+        if (character == '\n')
+            newLine++;
+        if (character == ' ' || character == '\n' || character == '\t')
             inword = NO;
         else if (inword == NO) {
             inword = YES;
-            nw++;
+            newWord++;
         }
     }
-    printf("%d %d %d\n", nl, nw, nc);
+    printf("%d %d %d\n", newLine, newWord, newChar);
 }
 
 void countDigits() {
-    int c = 0, nwhite = 0, nother = 0;
+    int character = 0, nwhite = 0, nother = 0;
     int ndigit[ndigitArraySize] = { 0 };
 
-    while ((c = getchar()) != EOF) {
-        if (c >= '0' && c <= '9')
-            ndigit[c - '0']++;
-        else if (c == ' ' || c == '\n' || c == '\t')
+    while ((character = getchar()) != EOF) {
+        if (character >= '0' && character <= '9')
+            ndigit[character - '0']++;
+        else if (character == ' ' || character == '\n' || character == '\t')
             nwhite++;
         else
             nother++;
@@ -112,18 +112,18 @@ void testPower() {
 }
 
 int power(int x, int n, int switchFork) {
-    int p = 1;
+    int power = 1;
     switch (switchFork) {
     case lessthanEqualN:
         for (int i = 1; i <= n; ++i)
-            p *= x;
-        return p;
+            power *= x;
+        return power;
     case nGraterthanZero:
         while (n > 0) {
-            p *= x;
+            power *= x;
             n--;
         }
-        return p;
+        return power;
     default:
         printf("Error -- function default\n");
         return -1;
@@ -147,11 +147,11 @@ void findLongestLine() {
 }
 
 int get_line(char* s, int lim) {
-    int c = { 0 }, i = {0};
-    for (i = 0; i < lim - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
-        s[i] = c;
-    if (c == '\n') {
-        s[i] = c;
+    int character = { 0 }, i = {0};
+    for (i = 0; i < lim - 1 && (character = getchar()) != EOF && character != '\n'; ++i)
+        s[i] = character;
+    if (character == '\n') {
+        s[i] = character;
         ++i;
     }
     s[i] = '\0';
